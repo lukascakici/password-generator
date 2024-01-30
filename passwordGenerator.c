@@ -11,7 +11,8 @@ char generateRandomChar() {
 
 // Function to generate a random password of a given length
 void generatePassword(char *password, int length) {
-    for (int i = 0; i < length; ++i) {
+    int i;
+    for (i = 0; i < length; ++i) {
         password[i] = generateRandomChar();
     }
     password[length] = '\0';  // Null-terminate the string
@@ -29,9 +30,10 @@ void savePasswordToFile(const char *filename, const char *password) {
 }
 
 int main() {
+
     srand(time(NULL));  // Seed the random number generator
 
-    int numPasswords;
+    int numPasswords, i;
     int passwordLength;
     char filename[50] = "passwords.txt";
 
@@ -42,7 +44,7 @@ int main() {
     scanf("%d", &passwordLength);
 
 
-    for (int i = 0; i < numPasswords; ++i) {
+    for (i = 0; i < numPasswords; ++i) {
         char password[passwordLength + 1];  // +1 for the null terminator
         generatePassword(password, passwordLength);
         printf("Generated Password: %s\n", password);
